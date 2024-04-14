@@ -1,5 +1,7 @@
 package cass.place_service.web;
 
+import cass.place_service.api.PlaceRequest;
+import cass.place_service.api.PlaceResponse;
 import cass.place_service.domain.Place;
 import cass.place_service.domain.PlaceService;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,8 @@ public class PlaceController {
     }
 
     @PostMapping
-    public ResponseEntity<Mono<Place>> create(@RequestBody Place place) {
-        Mono<Place> createdPlace = placeService.create(place);
+    public ResponseEntity<Mono<PlaceResponse>> create(@RequestBody PlaceRequest request) {
+        Mono<PlaceResponse> createdPlace = placeService.create(request).map(PlaceMapper::fromPlaceToResponse);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPlace);
     }
 

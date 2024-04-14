@@ -1,5 +1,6 @@
 package cass.place_service.domain;
 
+import cass.place_service.api.PlaceRequest;
 import reactor.core.publisher.Mono;
 
 
@@ -10,7 +11,14 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public Mono<Place> create(Place place) {
+    public Mono<Place> create(PlaceRequest request) {
+        var place = new Place(
+                null,
+                request.name(),
+                request.slug(),
+                request.state(),
+                request.createdAt(),
+                request.updatedAt());
         return placeRepository.save(place);
     }
 }
