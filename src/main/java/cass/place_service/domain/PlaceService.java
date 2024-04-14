@@ -19,9 +19,7 @@ public class PlaceService {
                 null,
                 request.name(),
                 slg.slugify(request.name()),
-                request.state(),
-                request.createdAt(),
-                request.updatedAt());
+                request.state(), null, null);
         return placeRepository.save(place);
     }
 }
