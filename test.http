@@ -4,9 +4,6 @@ POST http://localhost:8080/places
 Content-Type: application/json
 
 {
-  "name": "Place",
-  "state": "SP",
-  "slug": "SP",
-  "createdAt": "2024-06-01T14:45:39.691234",
-  "updatedAt": "2024-06-01T14:45:39.691234"
+  "name": "New place",
+  "state": "Rio de Janeiro"
 }
